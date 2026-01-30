@@ -1,0 +1,63 @@
+students = {
+    "minapara": {"Math": 85, "Science": 90, "English": 78},
+    "patel": {"Math": 92, "Science": 88, "English": 95},
+    "vora": {"Math": 76, "Science": 80, "English": 85}
+}
+while True:
+    print("\n Student Marks Record Menu:")
+    print("1. View All Student Marks")
+    print("2. View Marks of a Specific Student")
+    print("3. Add a New Student")
+    print("4. Update Student Marks")
+    print("5. Delete a Student Record")
+    print("6. Exit")
+
+    choice = int(input("Enter your choice: "))
+    if choice==1:
+         print("\n All Student Marks:")
+         for student,mark in students.items():
+             print(f"{student}{mark}")
+         
+    elif choice==2:
+        name=input('Enter name of Student')
+        if name in students:
+            print(f"\n marks of {name}: {students[name]}")
+        else:
+            print("\n Student not found!")
+        
+    elif choice==3:
+        name = input("Enter new student's name: ")
+        if name in students:
+            print("\n Student already exists!")
+        else:
+            math = int(input("Enter Math marks: "))
+            science = int(input("Enter Science marks: "))
+            english = int(input("Enter English marks: "))
+            students[name] = {"Math": math, "Science": science, "English": english}
+            print("\n Student added successfully!")
+    elif choice==4:
+        name = input("Enter the student's name: ")
+        if name in students:
+            subject = input("Enter the subject to update (Math/Science/English): ")
+            if subject in students[name]:
+                new_marks = int(input(f"Enter new marks for {subject}: "))
+                students[name][subject] = new_marks
+                print("\n Marks updated successfully!")
+            else:
+                print("\n Invalid subject!")
+        else:
+            print("\n Student not found!")
+        
+    elif choice==5:
+        name = input("Enter the student's name to delete: ")
+        if name in students:
+            del students[name]
+            print("\n Student record deleted successfully!")
+        else:
+            print("\n Student not found!")
+    elif choice==6:
+        print("\n Thank you for using the Student Marks System. Goodbye!");
+        break;
+    else:
+        print('Invalid Choice!')
+    
